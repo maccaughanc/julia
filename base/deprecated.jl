@@ -1483,4 +1483,6 @@ end
 # Calling promote_op is likely a bad idea, so deprecate its convenience wrapper promote_eltype_op
 @deprecate promote_eltype_op(op, As...) promote_op(op, map(eltype, As)...)
 
+@deprecate_binding FloatRange StepRangeHiLo
+
 # End deprecations scheduled for 0.6
