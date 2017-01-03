@@ -1421,7 +1421,7 @@ end
 # Deprecate manually vectorized `big` methods in favor of compact broadcast syntax
 @deprecate big(r::UnitRange) big.(r)
 @deprecate big(r::StepRange) big.(r)
-@deprecate big(r::FloatRange) big.(r)
+@deprecate big(r::StepRangeLen) big.(r)
 @deprecate big(r::LinSpace) big.(r)
 @deprecate big{T<:Integer,N}(x::AbstractArray{T,N}) big.(x)
 @deprecate big{T<:AbstractFloat,N}(x::AbstractArray{T,N}) big.(x)
@@ -1483,6 +1483,6 @@ end
 # Calling promote_op is likely a bad idea, so deprecate its convenience wrapper promote_eltype_op
 @deprecate promote_eltype_op(op, As...) promote_op(op, map(eltype, As)...)
 
-@deprecate_binding FloatRange StepRangeHiLo
+@deprecate FloatRange{T}(start::T, step, len, den) Base.floatrange(T, start, step, len, den)
 
 # End deprecations scheduled for 0.6

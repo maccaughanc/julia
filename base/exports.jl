@@ -62,7 +62,7 @@ export
     Enumerate,
     Factorization,
     FileMonitor,
-    StepRangeHiLo,
+    StepRangeLen,
     Future,
     Hermitian,
     UniformScaling,
