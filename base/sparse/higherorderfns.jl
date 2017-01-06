@@ -148,7 +148,7 @@ ambiguityfunnel{Tf}(f::Tf, x, y) = _aresameshape(x, y) ? _noshapecheck_map(f, x,
 broadcast(::typeof(+), x::SparseVector, y::SparseVector) = ambiguityfunnel(+, x, y) # base/sparse/sparsevectors.jl:1266
 broadcast(::typeof(-), x::SparseVector, y::SparseVector) = ambiguityfunnel(-, x, y) # base/sparse/sparsevectors.jl:1266
 broadcast(::typeof(*), x::SparseVector, y::SparseVector) = ambiguityfunnel(*, x, y) # base/sparse/sparsevectors.jl:1266
-function broadcast!(::typeof(identity), C::SparseMatrixCSC, A::SparseMatrixCSC) # from #17623, loc?
+function broadcast!{T<:SparseVecOrMat}(::typeof(identity), C::T, A::T) # from #17623, base/broadcast.jl:26
     _checksameshape(C, A); return copy!(C, A)
 end
 
