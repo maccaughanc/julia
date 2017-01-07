@@ -4826,3 +4826,18 @@ end
 f19599{T}(x::((S)->Vector{S})(T)...) = 1
 @test f19599([1],[1]) == 1
 @test_throws MethodError f19599([1],[1.0])
+
+# avoiding StackOverflowErrors (issues #12007, #10326, #15736)
+module SOE
+type Sgnd <: Signed
+    v::Int
+end
+using Base.Test
+io = IOBuffer()
+@test_throws ErrorException show(io, Sgnd(1))  #12007
+
+@test_throws ErrorException convert(Union{}, 1) #10326
+
+@test_throws ErrorException permutedims(rand(()), ()) #15736
+
+end
