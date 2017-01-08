@@ -7,12 +7,12 @@ module Consts
     const REMOTE_ORIGIN = "origin"
 
     # objs
-    const OBJ_ANY    = Cint(-2)
-    const OBJ_BAD    = Cint(-1)
-    const OBJ_COMMIT = Cint(1)
-    const OBJ_TREE   = Cint(2)
-    const OBJ_BLOB   = Cint(3)
-    const OBJ_TAG    = Cint(4)
+    const OBJ_UNKNOWN = Cint(-2)
+    const OBJ_BAD     = Cint(-1)
+    const OBJ_COMMIT  = Cint(1)
+    const OBJ_TREE    = Cint(2)
+    const OBJ_BLOB    = Cint(3)
+    const OBJ_TAG     = Cint(4)
 
     #revwalk
     const SORT_NONE        = Cint(0)
